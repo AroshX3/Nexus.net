@@ -1,45 +1,44 @@
 import Link from "next/link";
 
-
 const projects = [
   {
     name: "Exclusive",
-    desc: "My first ever eCommerce project",
+    desc: "My first ever eCommerce project.",
     status: "Active",
     link: "https://exclusive-liard-five.vercel.app",
     external: true,
   },
   {
     name: "Cc-vter",
-    desc: "A simple currency converter tool",
+    desc: "A simple currency converter tool.",
     status: "Active",
     link: "https://cc-vter.vercel.app",
     external: true,
   },
   {
     name: "CutPro",
-    desc: "A sheet cutting layout tool designed to help users place pieces more efficiently... ",
+    desc: "A sheet cutting layout tool for placing pieces more efficiently.",
     status: "Active",
     link: "https://cut-pro.vercel.app",
     external: true,
   },
   {
     name: "Cyber",
-    desc: "Take everything for free (fake eComars that actualy work)",
+    desc: "A fake eCommerce site that actually works.",
     status: "Active",
-    link: "cyber-lime-nine.vercel.app",
+    link: "https://cyber-lime-nine.vercel.app",
     external: true,
   },
   {
-    name: "Cyber",
-    desc: "Just an ordinary website, Visit if you wish its cool tho..",
+    name: "Furniture",
+    desc: "A simple website with a cleaner layout.",
     status: "Active",
-    link: "furniture-jade.vercel.app",
+    link: "https://furniture-jade.vercel.app",
     external: true,
   },
   {
     name: "Node",
-    desc: "Restricted access point",
+    desc: "Restricted access point.",
     status: "Restricted",
     link: "/node-5",
     external: false,
@@ -48,46 +47,45 @@ const projects = [
 
 export default function ProjectGrid() {
   return (
-    <div className="px-4 sm:px-6 py-10 max-w-5xl mx-auto">
-      {/* Title */}
-      <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-pink-500">
+    <div className="px-4 sm:px-6 py-10 max-w-5xl mx-auto text-[#2d241d] dark:text-[#f3e7d3]">
+      <h2 className="text-2xl text-[#000000b7] sm:text-3xl font-serif font-bold mb-3">
         My Projects
       </h2>
 
-      {/* Grid */}
+      <p className="text-sm text-[#000000b7] sm:text-base opacity-80 mb-8 max-w-2xl leading-6">
+        A small list of things I made while learning, messing around, and trying
+        not to break everything.
+      </p>
+
       <div className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => {
-          const Card = (
-            <div className="group border border-gray-200 dark:border-gray-700 rounded-xl p-5 sm:p-6 hover:shadow-lg hover:scale-[1.02] transition duration-200 h-full flex flex-col justify-between">
-              {/* Top */}
+          const card = (
+            <div className="h-full flex flex-col justify-between rounded-sm border border-[#c8b79d] dark:border-[#4d3e34] bg-[#f8f0e2] dark:bg-[#201914] p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-md">
               <div>
-                <h3 className="text-base sm:text-lg font-medium group-hover:underline">
-                  {project.name}
-                </h3>
-
-                <p className="text-sm opacity-70 mt-2">{project.desc}</p>
+                <h3 className="text-lg font-serif font-bold">{project.name}</h3>
+                <p className="text-sm opacity-80 mt-2 leading-6">
+                  {project.desc}
+                </p>
               </div>
 
-              {/* Bottom */}
-              <div className="mt-6">
-                <div className="text-xs">
-                  {project.status === "Restricted" ? (
-                    <span className="text-red-500">
-                      Status: {project.status}
-                    </span>
-                  ) : (
-                    <span className="opacity-60">Status: {project.status}</span>
-                  )}
-                </div>
+              <div className="mt-6 text-xs flex items-center justify-between gap-3">
+                <span
+                  className={
+                    project.status === "Restricted"
+                      ? "text-red-600 dark:text-red-400"
+                      : "opacity-70"
+                  }
+                >
+                  Status: {project.status}
+                </span>
 
-                <div className="mt-3 text-xs opacity-50">
-                  {project.external ? "Visit →" : "Access →"}
-                </div>
+                <span className="opacity-60">
+                  {project.external ? "Visit →" : "Open →"}
+                </span>
               </div>
             </div>
           );
 
-          // External vs Internal handling
           return project.external ? (
             <a
               key={index}
@@ -95,25 +93,26 @@ export default function ProjectGrid() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {Card}
+              {card}
             </a>
           ) : (
             <Link key={index} href={project.link}>
-              {Card}
+              {card}
             </Link>
           );
         })}
       </div>
-      <div className="my-16 text-center bg-blue-500 rounded-xl p-6 sm:p-10">
-        <h2 className="text-white font-medium text-xl sm:text-3xl mb-3">
-          Next You can visit
+
+      <div className="my-16 text-center bg-[#d9c3a1] dark:bg-[#3a2a22] rounded-sm border border-[#b89f78] dark:border-[#5a463a] p-6 sm:p-10">
+        <h2 className="text-[#2d241d] dark:text-[#f3e7d3] font-serif font-bold text-xl sm:text-3xl mb-3">
+          Next you can visit
         </h2>
 
         <Link
-          className="text-white text-lg sm:text-2xl hover:opacity-80 underline"
+          className="text-[#2d241d] dark:text-[#f3e7d3] text-lg sm:text-2xl hover:underline underline-offset-4"
           href="/about"
         >
-          About This Site
+          About this site
         </Link>
       </div>
     </div>
